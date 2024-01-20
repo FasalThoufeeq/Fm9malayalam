@@ -91,7 +91,7 @@
     <!-- End Header -->
 
     <!-- ======= Hero Section ======= -->
-    <section id="hero" class="d-flex flex-column justify-content-center">
+    <!-- <section id="hero" class="d-flex flex-column justify-content-center">
       <div class="container">
         <div class="row justify-content-center">
           <div class="col-xl-8">
@@ -117,6 +117,36 @@
                 </div>
               </div>
             </div>
+          </div>
+        </div>
+      </div>
+    </section> -->
+    <section id="hero" class="d-flex flex-column justify-content-center">
+      <div id="fmCarousel" class="carousel slide" data-ride="carousel" data-interval="5000">
+        <div class="carousel-inner">
+          <div class="carousel-item active" style="background-image: url('./assets/heropics/3.jpg');">
+            <div class="row justify-content-center">
+            <div class="carousel-caption">
+              <h1>FM 9 Malayalam - Elevate Your Experience.</h1>
+              <h2>Your Premier Source for Captivating FM Radio Experience</h2>
+            </div>
+          </div>
+          </div>
+          <div class="carousel-item" style="background-image: url('./assets/heropics/2.jpg');">
+            <div class="row justify-content-center">
+            <div class="carousel-caption">
+              <h1>FM 9 Malayalam - Beyond Boundaries, Beyond Limits.</h1>
+              <h2>Your Premier Source for Captivating FM Radio Experience</h2>
+            </div>
+          </div>
+          </div>
+          <div class="carousel-item" style="background-image: url('./assets/heropics/1.jpg');">
+            <div class="row justify-content-center">
+            <div class="carousel-caption">
+              <h1>FM 9 Malayalam - Where Imagination Meets Technology.</h1>
+              <h2>Your Premier Source for Captivating FM Radio Experience</h2>
+            </div>
+          </div>
           </div>
         </div>
       </div>
@@ -768,14 +798,33 @@
       src="https://cdn.jsdelivr.net/npm/toastify-js"
     ></script>
 
-    <script>
+    <!-- <script>
       // Enable carousel auto-slide
       $(document).ready(function () {
         $("#fmCarousel").carousel({
           interval: 3000,
         });
       });
-    </script>
+    </script> -->
+    <!-- <script>
+      document.addEventListener('DOMContentLoaded', function () {
+        const imageUrls = [
+          "./assets/heropics/concert-grand-piano-isolated-music-concept-generative-ai.jpg",
+          "./assets/heropics/electronic-piano-interior-room-blurred-background (1).jpg",
+          "./assets/heropics/flat-lay-music-background-with-acoustic-guitar.jpg",
+          "./assets/heropics/string-instruments-close-up-musical-concert-generative-ai.jpg",
+        ];
+        let currentIndex = 1; // Start with the second image as the active one
+    
+        function changeBackground() {
+          document.getElementById('hero').style.backgroundImage = `url("${imageUrls[currentIndex]}")`;
+          currentIndex = (currentIndex + 1) % imageUrls.length;
+          setTimeout(changeBackground, 3000);
+        }
+    
+        changeBackground();
+      });
+    </script> -->
 
     <script>
       function sendMessage(event) {
