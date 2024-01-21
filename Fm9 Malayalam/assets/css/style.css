@@ -538,6 +538,19 @@ h6 {
   border-radius: 0;
 }
 
+#fmCarousel .carousel-inner {
+  transition: transform 1s ease-in-out; 
+}
+
+#fmCarousel .carousel-item {
+  transition: transform 1s ease-in-out;
+}
+
+#fmCarousel.carousel.slide {
+  transition: transform 1s ease-in-out; 
+}
+
+
 @media (min-width: 1024px) {
   #hero {
     background-attachment: fixed;
