@@ -150,10 +150,6 @@
               <span class="button-text milli">Back</span>
             </button>
 
-            <!-- <button class="play-button media-button" label="play">
-              <i class="fas fa-play button-icons delta"></i>
-              <span class="button-text milli">Play</span>
-            </button> -->
             <button class="play-button media-button" label="play">
               <i class="fas fa-play button-icons delta"></i>
               <span class="button-text milli">Play</span>
@@ -979,13 +975,11 @@
         audioPlayer.addEventListener("timeupdate", updateProgressBar);
       };
     </script> -->
-    <script>
+    <!-- <script>
       document.addEventListener("DOMContentLoaded", function () {
         const audioPlayer = document.getElementById("audio-player");
         const musicUrls = [
-          "https://www.computerhope.com/jargon/m/example.mp3",
-          "https://commondatastorage.googleapis.com/codeskulptor-assets/Evillaugh.ogg",
-          "https://codeskulptor-demos.commondatastorage.googleapis.com/descent/background%20music.mp3",
+          "https://www.radioking.com/play/fm-9-malayalam",
         ];
         const musicNames = ["Track 1", "Track 2", "Track 3"];
         let currentTrackIndex = 0;
@@ -1088,6 +1082,91 @@
           audioPlayer.pause();
         });
       });
+    </script> -->
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const audioPlayer = document.getElementById("audio-player");
+        const musicUrl = "https://www.radioking.com/play/fm-9-malayalam";
+        const musicName = "FM 9 Malayalam";
+    
+        function playTrack() {
+          audioPlayer.src = musicUrl;
+          audioPlayer.play();
+          updateProgressBar();
+          showTrackName(musicName);
+          togglePlayPauseIcons(true);
+        }
+    
+        function updateProgressBar() {
+          const currentTime = formatTime(audioPlayer.currentTime);
+          const duration = formatTime(audioPlayer.duration);
+          const progressBar = document.querySelector(".progress-bar");
+          const progressTimeCurrent = document.querySelector(".progress-time-current");
+          const progressTimeTotal = document.querySelector(".progress-time-total");
+          const progress = (audioPlayer.currentTime / audioPlayer.duration) * 100;
+          progressBar.style.width = progress + "%";
+          progressTimeCurrent.textContent = currentTime;
+          // if (!isNaN(audioPlayer.duration)) {
+          //   progressTimeTotal.textContent = duration;
+          // }
+        }
+    
+        function showTrackName(trackName) {
+          const trackNameElement = document.querySelector(".track-name");
+          trackNameElement.textContent = trackName;
+        }
+    
+        function formatTime(time) {
+          const minutes = Math.floor(time / 60);
+          const seconds = Math.floor(time % 60);
+          return `${minutes}:${seconds < 10 ? "0" : ""}${seconds}`;
+        }
+    
+        // Play the track automatically when the page loads
+        playTrack();
+    
+        audioPlayer.addEventListener("loadedmetadata", function () {
+          updateProgressBar();
+        });
+    
+        document.querySelector(".play-button").addEventListener("click", function () {
+          if (audioPlayer.paused) {
+            audioPlayer.play();
+            togglePlayPauseIcons(true);
+          } else {
+            audioPlayer.pause();
+            togglePlayPauseIcons(false);
+          }
+        });
+    
+        audioPlayer.addEventListener("timeupdate", updateProgressBar);
+    
+        audioPlayer.addEventListener("ended", function () {
+          // If you want the audio to loop, uncomment the next line
+          // audioPlayer.currentTime = 0;
+          // Otherwise, you can stop the audio when it ends
+          audioPlayer.pause();
+          togglePlayPauseIcons(false);
+        });
+    
+        // Stop the audio player when the user navigates to another route
+        window.addEventListener("beforeunload", function () {
+          audioPlayer.pause();
+        });
+    
+        function togglePlayPauseIcons(isPlaying) {
+          const playButtonIcon = document.querySelector(".play-button .button-icons");
+    
+          if (isPlaying) {
+            playButtonIcon.classList.remove("fa-play");
+            playButtonIcon.classList.add("fa-pause");
+          } else {
+            playButtonIcon.classList.remove("fa-pause");
+            playButtonIcon.classList.add("fa-play");
+          }
+        }
+      });
     </script>
+    
   </body>
 </html>
